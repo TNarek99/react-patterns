@@ -21,11 +21,13 @@ class ToggleProvider extends Component {
       }
   };
 
+  renderSwitch = (toggle) => {
+      return <ToggleProvider.Renderer toggle={toggle} children={children} />
+  };
+
   render() {
     const { children, ...remainingProps } = this.props;
-    return <Toggle {...remainingProps} renderSwitch={(toggle) => {
-        return <ToggleProvider.Renderer toggle={toggle} children={children} />
-    }} />;
+    return <Toggle {...remainingProps} renderSwitch={this.renderSwitch} />;
   }
 }
 
